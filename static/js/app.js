@@ -87,9 +87,10 @@ function BuildCharts(selected) {
             ele.innerHTML += `<i style="color: #A0A0A0">${key}:</i> ${demo[key]}<br style="margin-bottom: 10px">`;
             console.log(`${key} : ${demo[key]}`);
 
-        // store weekly scrubs as var for use outside this bracket
-        // var oldscrubs = scrubs;
+
+        
         var scrubs = demo.wfreq;
+        
 
         }
         // ele.innerHTML += '</table>'
@@ -102,8 +103,7 @@ function BuildCharts(selected) {
               value: scrubs,          
               title: { text: "Weekly Scrubs" },          
               type: "indicator",          
-              mode: "gauge+number",          
-            //   delta: { reference: oldscrubs },          
+              mode: "gauge+number",         
               gauge: {          
                 axis: { range: [null, 9] },          
                 steps: [          
