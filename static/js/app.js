@@ -76,6 +76,8 @@ function BuildCharts(selected) {
 
         Plotly.newPlot("bubble", databubble, bubble_layout);
 
+
+        // load demographics info
         demo = data.metadata.filter(obj => obj.id == selected)[0];
         // console.log(demo);
         const ele = document.getElementById('sample-metadata');
@@ -85,11 +87,40 @@ function BuildCharts(selected) {
             ele.innerHTML += `<i style="color: #A0A0A0">${key}:</i> ${demo[key]}<br style="margin-bottom: 10px">`;
             console.log(`${key} : ${demo[key]}`);
 
+        // store weekly scrubs as var for use outside this bracket
+        // var oldscrubs = scrubs;
+        var scrubs = demo.wfreq;
+
         }
         // ele.innerHTML += '</table>'
         
 
-        
+        var data = [
+            {
+                type: "pie",       
+              domain: { x: [0, 1], y: [0, 1] },          
+              value: scrubs,          
+              title: { text: "Weekly Scrubs" },          
+              type: "indicator",          
+              mode: "gauge+number",          
+            //   delta: { reference: oldscrubs },          
+              gauge: {          
+                axis: { range: [null, 9] },          
+                steps: [          
+                  { range: [2, 7], color: "#e3e3e3" }, 
+                  { range: [7, 9], color: "#c3c3c3"}          
+                ],          
+                threshold: {          
+                  line: { color: "blue", width: 3 },          
+                  thickness: 0.75,          
+                  value: 0.5          
+                }          
+              }          
+            }          
+          ];          
+          
+          var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };          
+          Plotly.newPlot('gauge', data, layout);
 
           
     })
