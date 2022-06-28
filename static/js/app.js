@@ -38,7 +38,11 @@ function BuildCharts(selected) {
             hovertext: results[0].otu_labels.slice(0,10).map(a => a.replaceAll(';', ',  ')),
             type: "bar",
             // autosize: false
-            orientation: 'h'
+            orientation: 'h',
+            marker: {
+                color: results[0].sample_values.slice(0,10).reverse(),
+                colorscale: "Portland"
+            }
         };
 
         let databar = [trace1];
