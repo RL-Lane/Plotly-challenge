@@ -91,18 +91,14 @@ function BuildCharts(selected) {
             ele.innerHTML += `<i style="color: #A0A0A0">${key}:</i> ${demo[key]}<br style="margin-bottom: 10px">`;
             console.log(`${key} : ${demo[key]}`);
 
-
-        
-        var scrubs = demo.wfreq;
-        
-
-        }
+            var scrubs = demo.wfreq;
+            }
         // ele.innerHTML += '</table>'
         
 
         var data = [
             {
-                type: "pie",       
+              type: "pie",       
               domain: { x: [0, 1], y: [0, 1] },          
               value: scrubs,          
               title: { text: "Weekly Scrubs" },          
